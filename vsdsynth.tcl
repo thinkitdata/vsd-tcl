@@ -7,7 +7,7 @@
 # Create variables
 # Check if required files and directories exist
 # Read constraints file for csv and convert to SDC format
-# Read all files in netlist directory
+# Read all files in netlist directory ==> NEED TO DO
 # Create main synthesis script in format[2]
 #
 ##############################################################
