@@ -9,13 +9,6 @@ puts "LateLibraryPath = $LateLibraryPath"
 puts "ConstraintsFile = $ConstraintsFile"
 
 # Check if required directories and files as specified in csv exist
-if  {! [file exists $LateLibraryPath]} {
-  puts "\nError: cannot find late cell library in path $LateLibraryPath. Exiting..."
-  exit
-} else {
-    puts "\nInfo: Late cell library found in path $LateLibraryPath"
-  }
-
 if {! [file isdirectory $OoutputDirectory]} {
   puts "\nInfo: Cannot find output directory $OutputDirectory. Creating $OutputDirectory"
   file mkdir $OutputDirectory
@@ -30,6 +23,20 @@ if {! [file isdirectory $NetlistDirectory]} {
     puts "\nInfo: RTL netlist directory found in path $NetlistDirectory"
   }
 
+if  {! [file exists $EarlyLibraryPath]} {
+  puts "\nError: cannot find early cell library in path $EarlyLibraryPath. Exiting..."
+  exit
+} else {
+    puts "\nInfo: Early cell library found in path $EarlyLibraryPath"
+  }
+  
+if  {! [file exists $LateLibraryPath]} {
+  puts "\nError: cannot find late cell library in path $LateLibraryPath. Exiting..."
+  exit
+} else {
+    puts "\nInfo: Late cell library found in path $LateLibraryPath"
+  }
+  
 if  {! [file exists $ConstraintsFile]} {
   puts "\nError: cannot find constraints file in path $ConstraintsFile. Exiting..."
   exit
