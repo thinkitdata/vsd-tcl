@@ -8,6 +8,7 @@
 # Check if required files and directories exist
 # Read constraints file for csv and convert to SDC format
 # Read all files in netlist directory
+# Create main synthesis script in format[2]
 #
 ##############################################################
 
@@ -59,4 +60,16 @@ foreach f $netlist {
 }
 puts -nonewline $fileId "\nhierarchy -check"
 close $fileId
+
+# Create main synthesis script in format[2]
+puts -nonewline $fileId "\nhiearchy -top $DesignName"
+puts -nonewline $fileId "\nsynth -top $DesignName"
+puts -nonewline $fileId "\nsplitnets -ports -format __\proc; memory; opt; fsm; opt\ntechmap; opt\ndifflibmap -liberty  ${LateLibraryPath}"
+puts -nonewline $fileId "\nabc -liberty ${LateLibraryPath}"
+puts -nonewline $fileId "\nflatten"
+puts -nonewline $fileId "\nclean -purge\niopadmap -outpad BUFX2 A:Y -bits\nopt\nclean"
+puts -nonewline $fileId "\nwrite_verilog $OutputDirectory/$DesignName.synth.v"
+close $fileId
+puts "\nInfo: Synthesis script created and can be accessed from path $OutputDirectory/$DesignName.ys"
+
 
