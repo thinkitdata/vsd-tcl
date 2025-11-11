@@ -22,3 +22,8 @@ if (! -f $argv[1] || $argv[1] == "-help") then
   else
     echo USAGE:  .//vsdsynth \<csv file\>
     exit 1
+  endif
+else
+  tclsh vsdsynth.tcl $argv[1]
+endif
+
