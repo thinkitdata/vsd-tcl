@@ -1,4 +1,14 @@
-
+##############################################################
+# Main Task
+# Convert all inputs to format[1] & SDC format,
+# and pass to synthesis tool Yosys
+#
+# Sub Tasks
+# Create variables
+# Check if required files and directories exist
+# Read constraints file for csv and convert to SDC format
+#
+##############################################################
 
 # Create variables
 puts "DesignName = $DesignName"
