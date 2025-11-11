@@ -7,6 +7,7 @@
 # Create variables
 # Check if required files and directories exist
 # Read constraints file for csv and convert to SDC format
+# Read all files in netlist directory
 #
 ##############################################################
 
@@ -25,33 +26,37 @@ if {! [file isdirectory $OoutputDirectory]} {
 } else {
     puts "\nInfo: Output directory found in path $OutputDirectory"
   }
-
 if {! [file isdirectory $NetlistDirectory]} {
   puts "\nInfo: Cannot find RTL netlist directory $NetlistDirectory. Exiting..."
   exit
 } else {
     puts "\nInfo: RTL netlist directory found in path $NetlistDirectory"
   }
-
 if  {! [file exists $EarlyLibraryPath]} {
   puts "\nError: cannot find early cell library in path $EarlyLibraryPath. Exiting..."
   exit
 } else {
     puts "\nInfo: Early cell library found in path $EarlyLibraryPath"
-  }
-  
+  } 
 if  {! [file exists $LateLibraryPath]} {
   puts "\nError: cannot find late cell library in path $LateLibraryPath. Exiting..."
   exit
 } else {
     puts "\nInfo: Late cell library found in path $LateLibraryPath"
-  }
-  
+  }  
 if  {! [file exists $ConstraintsFile]} {
   puts "\nError: cannot find constraints file in path $ConstraintsFile. Exiting..."
   exit
 } else {
     puts "\nInfo: Constraints file found in path $ConstraintsFile"
   }
-
   
+# Read all files in netlist directory
+set netlist [glob -dir $NetlistDirectory *.v]
+foreach f $netlist {
+  set data $f
+  puts -nonewline $fieId "\nread_verilog $f"
+}
+puts -nonewline $fileId "\nhierarchy -check"
+close $fileId
+
