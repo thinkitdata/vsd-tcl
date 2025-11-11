@@ -1,1 +1,67 @@
-https://github.com/Rachanahr06/Day-1-Vsd_tcl/blob/main/README.md
+1  sudo apt-get update
+    2  sudo apt-get upgrade
+    3  sudo apt-get install build-essential clang bison flex libreadline-dev gawk tcl-dev libffi-dev git graphviz xdot pkg-config python3 libboost-system-dev libboost-python-dev libboost-filesystem-dev zlib1g-dev --assume-yes
+    4  gcc --version
+    5  git clone https://github.com/YosysHQ/yosys
+    6  git clone https://github.com/skyformat99/OpenTimer-1.0.5
+    7  sudo apt install autoconf automake --assume-yes
+    8  cd OpenTimer-1.0.5/
+    9  ./configure 
+   10  sudo apt update
+   11  sudo apt install libgoogle-glog-dev
+   12  ./configure 
+   13  make
+   14  aclocal
+   15  autoconf
+   16  automake --add-missing
+   17  ./configure
+   18  make
+   19  sudo make install
+   20  ls -ltr lib
+   21  find ./ -name "*OpenTimer*"
+   22  ./bin/OpenTimer
+   23  OpenTimer
+   24  ls /usr/local/lib/libOpenTimer.so.0
+   25  echo $LD_LIBRARY_PATH
+   26  export LD_LIBRARY_PATH=/usr/local/lib/libOpenTimer.so.0:$LD_LIBRARY_PATH
+   27  OpenTimer
+   28  echo $LD_LIBRARY_PATH
+   29  ls /usr/local/lib/libOpenTimer.so.0
+   30  which OpenTimer
+   31  ls -ltr /usr/local/bin/OpenTimer
+   32  sudo make install
+   33  OpenTimer
+   34  sudo ldconfig
+   35  cd ../
+   36  sudo rm -rf OpenTimer-1.0.5 
+   37  git clone https://github.com/skyformat99/OpenTimer-1.0.5
+   38  cd OpenTimer-1.0.5/
+   39  ./configure 
+   40  make
+   41  sudo apt update
+   42  sudo apt list --upgradable
+   43  sudo apt upgrade
+   44  sudo apt install autoconf automake
+   45  aclocal
+   46  cd ../
+   47  sudo rm -rf OpenTimer-1.0.5/
+   48  git clone https://github.com/skyformat99/OpenTimer-1.0.5
+   49  cd OpenTimer-1.0.5/
+   50  ./configure 
+   51  make
+   52  aclocal
+   53  autoconf
+   54  automake --add-missing
+   55  ./configure
+   56  make
+   57  ./bin/OpenTimer
+   58  pwd
+   59  ./configure
+   60  /home/vsduser/OpenTimer-1.0.5
+   61  /home/vsduser/OpenTimer-1.0.5/bin/OpenTimer
+   62  cd 
+   63  /home/vsduser/OpenTimer-1.0.5/bin/OpenTimer
+   64  cd yosys/
+   65  make
+   66  yosys
+
