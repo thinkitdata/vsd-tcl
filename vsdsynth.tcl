@@ -9,7 +9,7 @@
 # Read constraints file for csv and convert to SDC format
 # Read all files in netlist directory ==> NEED TO DO
 # Create main synthesis script in format[2]
-#
+# Pass this script to Yosys
 ##############################################################
 
 # Create variables
@@ -71,5 +71,19 @@ puts -nonewline $fileId "\nclean -purge\niopadmap -outpad BUFX2 A:Y -bits\nopt\n
 puts -nonewline $fileId "\nwrite_verilog $OutputDirectory/$DesignName.synth.v"
 close $fileId
 puts "\nInfo: Synthesis script created and can be accessed from path $OutputDirectory/$DesignName.ys"
+
+#---------------------------------------------------------------------------------------------#
+#------------------------------ Run synthesis script using yosys -----------------------------#
+#---------------------------------------------------------------------------------------------#
+if {[catch { exec yosys -s $OutputDirectory/$DesignName.ys >& $OutputDirectory/$DesignName.synthesis.log} msg]} {
+  puts "\nError: Synthesis failed due to errors.  Please refer to log $OutputDirectory/$DesignName.synthesis.log for errors"
+  exit
+} else {
+    puts "\nInfo: Synthesis finished successfully"
+  }
+}
+puts "\nInfo: Please refer to log $OutputDirectory/$DesignName.synthesis.log"
+
+
 
 
